@@ -10,6 +10,7 @@ Attributes
 - `dry_run` - `true`/`false` Defaults to `false`. If `true` will disable actual file operations.`
 - `files` - `true`/`false` Defaults to `true`. If false will ignore files during cleanup.
 - `directories` - `true`/`false` Defaults to `true`. If false will ignore directories during cleanup.
+- `sort_by` - `:atime`/`:ctime`/`:mtime` Defaults to `:mtime`. Sort the files to be deleted by their (a)ccess, (c)reate or (m)odified time.
 
 `keep_last` and `older_than` are mutally exclusive since I can't think of any way combining them makes sense.
 
