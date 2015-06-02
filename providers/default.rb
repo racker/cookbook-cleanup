@@ -10,10 +10,18 @@ SECONDS = {
 
 action :clean do
   files = Pathname.glob(new_resource.name)
+  if !files.empty? && !new_resource.except.nil?
+    do_not_delete = Pathname.new new_resource.except
+    unless do_not_delete.absolute?
+      do_not_delete = files[0].dirname + do_not_delete
+    end
+    do_not_delete = do_not_delete.realpath if do_not_delete.symlink?
+    files.delete(do_not_delete)
+  end
   Chef::Log.debug "Found dirs: #{files.join(',')}"
   if new_resource.keep_last
     keep_last = new_resource.keep_last
-    files.sort! { |x, y| y.lstat.ctime <=> x.lstat.ctime }
+    files.sort! { |x, y| y.lstat.send(new_resource.sort_by) <=> x.lstat.send(new_resource.sort_by) }
     files = files[keep_last..-1] || [] # The || is necessary in 1.8.7 but not 1.9
     Chef::Log.info "Cleaning up: #{files.join(',')}"
     files.each do |file|
@@ -29,7 +37,7 @@ action :clean do
     end
     new_time = time - diff
     files.each do |file|
-      if file.lstat.atime < Time.at(new_time)
+      if file.lstat.send(new_resource.sort_by) < Time.at(new_time)
         kill_file(file)
         Chef::Log.info "#{dry_run_str}Deleting #{file}"
       else
