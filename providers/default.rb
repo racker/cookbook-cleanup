@@ -17,6 +17,7 @@ action :clean do
     end
     do_not_delete = do_not_delete.realpath if do_not_delete.symlink?
     files.delete(do_not_delete)
+    new_resource.updated_by_last_action(true)
   end
   Chef::Log.debug "Found dirs: #{files.join(',')}"
   if new_resource.keep_last
@@ -28,6 +29,7 @@ action :clean do
       kill_file(file)
       Chef::Log.info "#{dry_run_str}Removed #{file}"
     end
+    new_resource.updated_by_last_action(true)
   elsif new_resource.older_than
     ot = new_resource.older_than
     time = Time.now.to_i
@@ -39,6 +41,7 @@ action :clean do
     files.each do |file|
       if file.lstat.send(new_resource.sort_by) < Time.at(new_time)
         kill_file(file)
+        new_resource.updated_by_last_action(true)
         Chef::Log.info "#{dry_run_str}Deleting #{file}"
       else
         Chef::Log.info "#{dry_run_str}Not deleting #{file}"
