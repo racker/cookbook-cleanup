@@ -1,0 +1,9 @@
+# Offense count: 2
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 100
+
+# Offense count: 1
+# Configuration parameters: MinBodyLength.
+Style/GuardClause:
+  Enabled: false

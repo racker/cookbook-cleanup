@@ -19,7 +19,7 @@ attribute :older_than, kind_of: Hash, callbacks: {
     keys = time.keys.map(&:to_sym)
     keys.map { |k| VALID_TIME_KEYS.include?(k) }.all?
   end,
-  'value must be an integer' => lambda { |time| time[time.keys.first].is_a? Integer }
+  'value must be an integer' => ->(time) { time[time.keys.first].is_a? Integer }
 }
 
 def initialize(*args)

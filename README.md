@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/racker/cookbook-cleanup.svg)](https://travis-ci.org/racker/cookbook-cleanup)
+[![Chef cookbook](https://img.shields.io/cookbook/v/cleanup.svg)](https://supermarket.chef.io/cookbooks/cleanup)
+
 Description
 ===========
 
