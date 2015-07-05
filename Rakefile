@@ -20,9 +20,18 @@ end
 desc 'Run all style checks'
 task style: %w(style:chef style:ruby)
 
+desc 'Run Test Kitchen integration tests'
+task :integration do
+  require 'kitchen'
+  Kitchen.logger = Kitchen.default_file_logger
+  Kitchen::Config.new.instances.each do |instance|
+    instance.test(:always)
+  end
+end
+
 namespace :travis do
   desc 'Run tests on Travis'
   task ci: %w(style)
 end
 
-task default: %w(style)
+task default: %w(style integration)
