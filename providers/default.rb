@@ -8,6 +8,8 @@ SECONDS = {
   weeks: 604_800
 }
 
+use_inline_resources
+
 action :clean do
   files = Pathname.glob(new_resource.name)
   if !files.empty? && !new_resource.except.nil?
