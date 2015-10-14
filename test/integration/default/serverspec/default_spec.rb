@@ -12,9 +12,13 @@ describe file('/cleanup/bar') do
   it { should_not be_file }
 end
 
+describe file('/cleanup/corge') do
+  it { should be_file }
+end
+
 describe file('/cleanup/baz') do
   it { should be_file }
 end
-describe file('/cleanup/quz') do
+describe file('/cleanup/qux') do
   it { should be_file }
 end

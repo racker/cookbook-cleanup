@@ -12,16 +12,19 @@ end
 %w(
   foo
   bar
+  corge
   baz
-  quz
+  qux
 ).each do |f|
   file "/cleanup/#{f}" do
+    content "#{f}\n"
     action :create
   end
 end
 
 cleanup '/cleanup/*' do
   keep_last 2
+  except 'grault'
   sort_by :ctime
 end
 

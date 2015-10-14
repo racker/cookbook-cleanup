@@ -1,9 +1,7 @@
-inherit_from: .rubocop_todo.yml
-
 # Offense count: 2
 # Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
-  Max: 180
+  Max: 100
 
 # Offense count: 1
 # Configuration parameters: MinBodyLength.
