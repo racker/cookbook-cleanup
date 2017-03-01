@@ -60,7 +60,7 @@ def kill_file(file)
   unless new_resource.dry_run
     if new_resource.directories && file.directory?
       file.rmtree
-    elsif new_resource.files
+    elsif new_resource.files && file.file?
       file.delete
     end
   end
