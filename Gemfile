@@ -6,8 +6,8 @@ source 'https://rubygems.org'
 
 group :plugins do
   gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
-  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
   gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
+  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
 end
 
 group :style do
@@ -20,6 +20,6 @@ group :test do
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.4.0'
   gem 'kitchen-vagrant', '~> 0.18.0'
+  gem 'test-kitchen', '~> 1.4.0'
 end
