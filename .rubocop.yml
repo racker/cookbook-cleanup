@@ -3,7 +3,9 @@
 Metrics/LineLength:
   Max: 100
 
-# Offense count: 1
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
   Enabled: false
+
+Metrics/BlockLength:
+    Max: 39
