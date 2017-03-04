@@ -6,7 +6,7 @@ SECONDS = {
   hours: 3600,
   days: 86_400,
   weeks: 604_800
-}
+}.freeze
 
 action :clean do
   files = Pathname.glob(new_resource.name)
