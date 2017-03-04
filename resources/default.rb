@@ -1,7 +1,7 @@
 actions :clean
 
-VALID_TIME_KEYS = [:minutes, :hours, :days, :weeks]
-VALID_SORT_KEYS = [:mtime, :atime, :ctime]
+VALID_TIME_KEYS = [:minutes, :hours, :days, :weeks].freeze
+VALID_SORT_KEYS = [:mtime, :atime, :ctime].freeze
 
 attribute :name, kind_of: String
 attribute :sort_by, kind_of: Symbol, default: :mtime, callbacks: {
