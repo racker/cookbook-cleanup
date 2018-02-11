@@ -11,15 +11,15 @@ group :plugins do
 end
 
 group :style do
-  gem 'foodcritic', '~> 3.0'
-  gem 'rubocop', '~> 0.48.1'
+  gem 'foodcritic'
+  gem 'rubocop'
 end
 
 group :test do
-  gem 'berkshelf', '~> 3'
+  gem 'berkshelf'
 end
 
 group :integration do
-  gem 'kitchen-vagrant', '~> 0.18.0'
-  gem 'test-kitchen', '~> 1.4.0'
+  gem 'kitchen-vagrant'
+  gem 'test-kitchen'
 end
