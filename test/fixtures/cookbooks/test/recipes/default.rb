@@ -9,12 +9,12 @@ directory '/cleanup' do
   recursive true
 end
 
-%w(
+%w[
   foo
   bar
   baz
   quz
-).each do |f|
+].each do |f|
   file "/cleanup/#{f}" do
     action :create
   end

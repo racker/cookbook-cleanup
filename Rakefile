@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 # Based on magic_shell cookbook code, thanks @sethvargo.
@@ -18,7 +19,7 @@ namespace :style do
 end
 
 desc 'Run all style checks'
-task style: %w(style:chef style:ruby)
+task style: %w[style:chef style:ruby]
 
 desc 'Run Test Kitchen integration tests'
 task :integration do
@@ -31,7 +32,7 @@ end
 
 namespace :travis do
   desc 'Run tests on Travis'
-  task ci: %w(style)
+  task ci: %w[style]
 end
 
-task default: %w(style integration)
+task default: %w[style integration]
