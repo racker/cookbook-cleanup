@@ -1,3 +1,5 @@
+provides :cleanup
+
 require 'pathname'
 require 'time'
 
@@ -9,9 +11,16 @@ SECONDS = {
 }.freeze
 
 action :clean do
-  files = Pathname.glob(new_resource.name)
+  if node['platform_family'] == 'debian'
+    files = Pathname.glob(new_resource.name)
+  elsif node['platform_family'] == 'windows'
+    win_path = (new_resource.name).gsub("\\","/")
+    files = Pathname.glob(win_path)
+  end
+  Chef::Log.info "Files are : #{files}"
   if !files.empty? && !new_resource.except.nil?
     do_not_delete = Pathname.new new_resource.except
+    Chef::Log.info "do_not_delete is : #{do_not_delete}"
     unless do_not_delete.absolute?
       do_not_delete = files[0].dirname + do_not_delete
     end
