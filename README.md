@@ -25,6 +25,7 @@ Usage
 
 Include the cookbook then just call the `cleanup` resource from your recipe like this:
 
+### For Linux
 ### Keep the most recent 5 files
 ```ruby
 cleanup "/your/path/here/*" do
@@ -37,3 +38,10 @@ cleanup "/your/path/here/*" do
   older_than :weeks => 1
 end
 ```
+
+### For Windows
+### Keep the most recent 5 files
+```ruby
+cleanup "your\\path\\here\\*" do
+  keep_last 5
+end

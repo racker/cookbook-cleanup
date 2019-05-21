@@ -1,3 +1,5 @@
+provides :cleanup
+
 require 'pathname'
 require 'time'
 
@@ -9,7 +11,12 @@ SECONDS = {
 }.freeze
 
 action :clean do
-  files = Pathname.glob(new_resource.name)
+  if node['platform_family'] == 'windows'
+    win_path = (new_resource.name).gsub("\\","/")
+    files = Pathname.glob(win_path)
+  else 
+	files = Pathname.glob(new_resource.name)
+  end
   if !files.empty? && !new_resource.except.nil?
     do_not_delete = Pathname.new new_resource.except
     unless do_not_delete.absolute?

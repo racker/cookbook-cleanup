@@ -1,3 +1,5 @@
+resource_name :cleanup
+provides :cleanup
 actions :clean
 
 VALID_TIME_KEYS = %i[minutes hours days weeks].freeze
